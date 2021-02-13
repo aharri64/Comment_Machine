@@ -26,3 +26,4 @@ For a user who is trying to discover their taste profile or expand it, for the c
 - Once the user has pressed **post** on the logger page, they will be taken back to the user profile page where they can view their new post.
 - logging out will take the user to the hompage
 
+## Wireframes
