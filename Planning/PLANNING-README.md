@@ -37,36 +37,40 @@ For a user who is trying to discover their taste profile or expand it, for the c
 
 ### Homepage
 
-![overview](./pics/2-home.png)
+![homepage](./pics/2-home.png)
 
 ### Signup
 
-![overview](./pics/3-signup.png)
+![signup](./pics/3-signup.png)
 
 ### Welcome
 
-![overview](./pics/4-welcome.png)
+![welcome](./pics/4-welcome.png)
 
 ### Login
 
-![overview](./pics/5-login.png)
+![login](./pics/5-login.png)
 
 ### User Profile
 
-![overview](./pics/6-profile.png)
+![user profile](./pics/6-profile.png)
 
 ### Search
 
-![overview](./pics/7-search.png)
+![Serch page](./pics/7-search.png)
 
 ### Search Results
 
-![overview](./pics/8-search-results.png)
+![Search Results](./pics/8-search-results.png)
 
 ### Beverage Profile
 
-![overview](./pics/9-beverage-profile.png)
+![Beverage profile](./pics/9-beverage-profile.png)
 
 ### Posting
 
-![overview](./pics/10-making-a-post.png)
+![Posting](./pics/10-making-a-post.png)
+
+## Database
+
+![database](./pics/ERD.png)
