@@ -18,7 +18,7 @@ passport.deserializeUser((id, cb) => {
         })
         .catch(error => {
             console.log('yo... There is an error');
-            console.log(error); did
+            console.log(error);
         })
 })
 
@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
         where: { email }
     })
         .then(user => {
-            if (!user || !user.validPassword) {
+            if (!user || !user.validPassword(password)) {
                 cb(null, false);
             } else {
                 cb(null, user)
@@ -38,8 +38,9 @@ passport.use(new LocalStrategy({
         })
         .catch(error => {
             console.log('******************************* ERROR');
-            console.log(error)
+            console.log(error);
+            console.log('******************************* ERROR');
         })
-}))
+}));
 
 module.exports = passport
