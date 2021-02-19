@@ -14,7 +14,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-  req.logOut(); //*logs the user out of the session
+  req.logOut(); // logs the user out of the session
   req.flash('success', 'logging out... See you next time!');
   res.redirect('/')
 });
@@ -25,7 +25,7 @@ router.get('/logout', (req, res) => {
 router.post('/signup', (req, res) => {
   // we now have access to the user info (req.body);
   // console.log(req.body);
-  const { email, name, password } = req.body; // goes and us access to whatever key/value inside of the object (req.body)
+  const { email, name, password } = req.body; // goes and gives us access to whatever key/value inside of the object (req.body)
   db.user.findOrCreate({
     where: { email },
     defaults: { name, password }

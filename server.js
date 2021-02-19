@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
 const session = require('express-session');
-const passport = require('./config/ppConfig'); //
+const passport = require('./config/ppconfig'); //
 const flash = require('connect-flash');
+const axios = require('axios').default
 
 
 const app = express();
@@ -11,7 +12,8 @@ app.set('view engine', 'ejs');
 
 // Secret Session here
 const SECRET_SESSION = process.env.SECRET_SESSION;
-const isLoggedIn = require('./middleware/isLoggedIn')
+const isLoggedIn = require('./middleware/isLoggedIn');
+const { search } = require('./controllers/auth');
 // MIDDLEWARE
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +32,8 @@ const sessionObject = {
   saveUninitialized: true
 }
 app.use(session(sessionObject));
+
+
 // Passport
 app.use(passport.initialize()); // Initialize passport
 app.use(passport.session()); // Add a session
@@ -49,14 +53,45 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+//profile
 app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
+
+// go to search page from nav bar
+app.get('/search', isLoggedIn, (req, res) => {
+  res.render('search');
+})
+
+app.get('/results', (req, res) => {
+  let searchByName = 's=' + req.query.searchByName
+  console.log('***********************')
+  console.log(req.query)
+  // let searchByIngredient = 'i=' req.body.ingredient
+  var qs= {
+      headers:{
+          'x-rapidapi-key': process.env.RAPID_API_KEY,
+          'x-rapidapi-host': process.env.RAPID_API_HOST 
+      }
+  }
+
+  axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
+  .then(function (response) {
+      let data = response.data
+      console.log(data.drinks[0].strDrink)
+      res.render('results', {data})
+  })
+
+})
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
 
-module.exports = server;
+module.exports = server;``
+
+
+

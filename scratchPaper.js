@@ -1,13 +1,14 @@
-/*
+require('dotenv').config();
 const express = require('express')
 var axios = require("axios").default;
 
 const app = express();
 
+
 var options = {
   method: 'GET',
   url: 'https://the-cocktail-db.p.rapidapi.com/search.php',
-  params: {i: req.body.search}, //TODO req.body.search
+  params: {i: "bourbon"}, //TODO req.body.search
   headers: {
     'x-rapidapi-key': process.env.RAPID_API_KEY,
     'x-rapidapi-host': process.env.RAPID_API_HOST
@@ -19,6 +20,7 @@ axios.request(options).then(function (response) {
 }).catch(function (error) {
 	console.error(error);
 });
+
 
 var options = {
     method: 'GET',
@@ -36,6 +38,7 @@ var options = {
       console.error(error);
   });
 
+
 app.get('/results', (req, res) => {
     let searchByName = 's=' + req.body.name
     // let searchByIngredient = 'i=' req.body.ingredient
@@ -48,9 +51,8 @@ app.get('/results', (req, res) => {
 
     axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
     .then(function (response) {
-        let data = responce.data.search
+        let data = response.data.search
         res.render('results', {data})
     })
 
 })
-*/
