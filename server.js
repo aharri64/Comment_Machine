@@ -85,13 +85,31 @@ app.get('/results', (req, res) => {
 
 })
 
+// app.get('/results/:drink', (req, res) => {
+//   let drink = req.query.drinks;
+//   let searchByName = 's=' + req.query.searchByName
+//   console.log('***   ' + req.query.drinks + '   ***')
+
+//   var qs= {
+//     headers:{
+//         'x-rapidapi-key': process.env.RAPID_API_KEY,
+//         'x-rapidapi-host': process.env.RAPID_API_HOST 
+//     }
+//   }
+//   axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
+//   .then(function (response) {
+//       let data = response.data
+//       console.log(data.drinks[0].strDrink)
+//       res.render('results', {data})
+//   })
+// })
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
 });
 
-module.exports = server;``
+module.exports = server;
 
 
 
