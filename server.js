@@ -66,8 +66,8 @@ app.get('/search', isLoggedIn, (req, res) => {
 
 app.get('/results', (req, res) => {
   let searchByName = 's=' + req.query.searchByName
-  console.log('***********************')
-  console.log(req.query)
+  // console.log('***********************')
+  // console.log(req.query)
   // let searchByIngredient = 'i=' req.body.ingredient
   var qs= {
       headers:{
@@ -79,11 +79,52 @@ app.get('/results', (req, res) => {
   axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
   .then(function (response) {
       let data = response.data
-      console.log(data.drinks[0].strDrink)
+      // console.log(data.drinks[0].strDrink)
       res.render('results', {data})
   })
 
 })
+
+app.get('/drinks/:single', (req, res) => {
+  // const single = req.params.single
+  let single = req.params.single
+  var options = {
+    method: 'GET',
+    url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
+    params: {i: single},
+    headers: {
+      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      'x-rapidapi-host': process.env.RAPID_API_HOST 
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const data = response.data
+    res.render('single', {data})
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+  // console.log('***********************')
+  // console.log(req.query)
+  // let searchByIngredient = 'i=' req.body.ingredient
+
+  // var qs= {
+  //     headers:{
+  //         'x-rapidapi-key': process.env.RAPID_API_KEY,
+  //         'x-rapidapi-host': process.env.RAPID_API_HOST 
+  //     }
+  // }
+
+  // axios.get(`https://the-cocktail-db.p.rapidapi.com/lookup.php?${single}`, qs)
+  // .then(function (response) {
+  //     let data = response.data
+  //     console.log(data)
+  //     // console.log(data.drinks[0].strDrink)
+  //     res.render('results', {data})
+  // })
+})
+
 
 // app.get('/results/:drink', (req, res) => {
 //   let drink = req.query.drinks;
