@@ -1,6 +1,6 @@
 
 <h1>drinks</h1>
-
+<p><%= data.drinks[0].strTags %></p>
 <% data.drinks.forEach(drink => { %>
     <div class="well">
         <h2><a href="drinks/<%= drink.idDrink %>"><%= drink.strDrink %></a></h2>
