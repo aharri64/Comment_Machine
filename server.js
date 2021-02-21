@@ -107,7 +107,9 @@ app.get('/drinks/:single/new', (req, res) => {
   };
   
   axios.request(options).then(function (response) {
+
     const data = response.data
+    // //console.log('LOOOOOOOOOOOOOOK HERE***', data)
     res.render('single/new', {data})
     console.log('*****', response.data, '*****');
   }).catch(function (error) {
@@ -137,8 +139,21 @@ app.get('/drinks/:single', (req, res) => {
   }).catch(function (error) {
     console.error(error);
   });
-
+  
 }) 
+
+function addIngredientsArray (responseData) {
+  const data = responseData
+  data.drinks[0].ingredient = []
+  if (data.drinks[0].strIngredient1 !== null) {
+    const ingr = {
+      name: data.drinks[0].strIngredient1,
+      measurment: data.drinks[0].strMeasure1
+    }
+    data.drinks[0].ingredient.push(ingr)
+  }
+  return data;
+};
 
 //* get a single drink from results page
 

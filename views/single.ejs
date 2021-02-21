@@ -21,9 +21,11 @@
 <p> <%= data.drinks[0].strMeasure15 %>  <%= data.drinks[0].strIngredient15 %> </p>
 <p>Glass: <%= data.drinks[0].strGlass %> </p>
 <p>Instructions: <%= data.drinks[0].strInstructions %> </p>
+
 <% if (data.drinks[0].strVideo !== null) { %>
 <a href="<%= data.drinks[0].strVideo %>">Video</a>
 <% } %>
+
 
 <input type="button" value="Back" onclick="window.history.back()" /> 
 
