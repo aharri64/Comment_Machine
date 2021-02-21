@@ -10,10 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.cocktail.belongsTo(models.user);
     }
   };
   cocktail.init({
+    userId: DataTypes.INTEGER,
     drinkId: DataTypes.INTEGER,
     drinkName: DataTypes.STRING,
     ingredient1: DataTypes.STRING,
@@ -31,11 +32,13 @@ module.exports = (sequelize, DataTypes) => {
     ingredient13: DataTypes.STRING,
     ingredient14: DataTypes.STRING,
     ingredient15: DataTypes.STRING,
-    rating: DataTypes.STRING,
+    instructions: DataTypes.TEXT,
+    rating: DataTypes.INTEGER,
     month: DataTypes.STRING,
     day: DataTypes.STRING,
     year: DataTypes.STRING,
-    comment: DataTypes.STRING
+    comment: DataTypes.TEXT,
+    strDrinkThumb: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'cocktail',

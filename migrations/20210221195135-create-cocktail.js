@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       drinkId: {
         type: Sequelize.INTEGER
       },
@@ -59,8 +62,11 @@ module.exports = {
       ingredient15: {
         type: Sequelize.STRING
       },
+      instructions: {
+        type: Sequelize.TEXT
+      },
       rating: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       month: {
         type: Sequelize.STRING
@@ -72,6 +78,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       comment: {
+        type: Sequelize.TEXT
+      },
+      strDrinkThumb: {
         type: Sequelize.STRING
       },
       createdAt: {
