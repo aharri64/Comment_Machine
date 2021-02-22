@@ -2,7 +2,7 @@
 
 <p>Name: <%= data.drinkName %> </p>
 
-<form class="form-floating" method="POST" action="/drinks/editmydrink/<%=data.id%>/?_method=PUT">
+<form class="form-floating" action="/drinks/editmydrink/<%=data.id%>/?_method=PUT" method="POST">
     <input type="text" class="form-control" id="drinkName" name="drinkName" value="<%= data.drinkName %>" cols="2" rows=''>
     <% if (data.ingredient1 !== '') { %>
         <div>
@@ -184,13 +184,14 @@
 
     <div>
         <label for="comment">Comment</label>
-        <input type="text" class="form-control" id="comment" name="comment" value="Comments">
+        <input type="text" class="form-control" id="comment" name="comment" value="<%= data.comment %>" >
     </div>
     <div>
         <label for="strDrinkThumb">Picture URL</label>
         <input type="text" class="form-control" id="strDrinkThumb" name="strDrinkThumb" value="<%= data.strDrinkThumb %>" cols="2" rows='5'>
     </div>
     <button type="submit">UPDATE</button>
+
 </form>
 
 <input type="button" value="Back" onclick="window.history.back()" /> 

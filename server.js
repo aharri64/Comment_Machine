@@ -6,7 +6,7 @@ const passport = require('./config/ppconfig'); //
 const flash = require('connect-flash');
 const axios = require('axios').default
 const db = require('./models')
-
+const methodOverride = require('method-override');
 
 
 const app = express();
@@ -18,6 +18,7 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const { search, get } = require('./controllers/auth');
 
 // MIDDLEWARE
+app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
