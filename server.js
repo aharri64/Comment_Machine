@@ -51,7 +51,7 @@ app.use((req, res, next) => {
 
 // Controllers
 app.use('/auth', require('./controllers/auth'));
-// app.use('/profile', require('./controllers/profile'));
+app.use('/drinks', require('./controllers/drinks'));
 // app.use('/search', require('./controllers/search'));
 
 
@@ -65,7 +65,7 @@ app.get('/', (req, res) => {
 
 //* profile
 app.get('/profile', isLoggedIn, (req, res) => {
-  db.user.findAll({
+  db.user.findOne({
     include: [db.cocktail],
     where: {
       id: req.user.dataValues.id
@@ -78,6 +78,41 @@ app.get('/profile', isLoggedIn, (req, res) => {
   });
   // const { id, name, email } = req.user.get();
 });
+
+
+
+// //GET TO INDIVIDUAL COCKTAIL
+// app.get('/drinks/mydrink/:idDrink', (req, res) => {
+//   let idDrink = req.params.idDrink
+//   console.log(req.params.idDrink)
+//   db.cocktail.findOne({
+    
+//     where: {
+//       id: idDrink
+//     } 
+//   }).then(function(cocktail){
+//     console.log('looooooooooooook***************', cocktail)
+//     res.render('drinks/mydrink', { data:cocktail });
+//   });
+// }); 
+
+// //GET TO UPDATE FORM
+// app.get('/drinks/editmydrink/:idDrink', (req, res) => {
+//   let idDrink = req.params.idDrink
+//   console.log(req.params.idDrink)
+//   db.cocktail.findOne({
+
+//     where: {
+//       id: idDrink
+//     } 
+//   }).then(function(cocktail){
+//     console.log('looooooooooooook***************', cocktail)
+//     res.render('drinks/editmydrink', { data:cocktail });
+//   });
+// }); 
+
+
+
 
 //* go to search page from nav bar
 app.get('/search', isLoggedIn, (req, res) => {
@@ -245,6 +280,9 @@ app.get('/drinks/:single', (req, res) => {
   });
   
 }) 
+
+//PUT ROUTE
+
 
 /*
 function addIngredientsArray (responseData) {

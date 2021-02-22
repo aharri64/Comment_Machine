@@ -1,6 +1,13 @@
 <h2>Profile Page</h2>
 
 <h3>Welcome to your PROFILE</h3>
-<p>Id: <%= data.id %></p>
-<p>Name: <%= data.name %></p>
-<p>Email: <%= data.email %></p>
+<p>Id: <%= data.dataValues.id %></p>
+<p>Name: <%= data.dataValues.name %></p>
+<p>Email: <%= data.dataValues.email %></p>
+
+<%data.cocktails.forEach(attribute => { %>
+<p><%= attribute.id %></p>
+    <h5>Name: <a href="drinks/mydrink/<%= attribute.id %>"><%= attribute.drinkName %></a></h5>
+    <img src= '<%= attribute.strDrinkThumb %>' width='500px' alt="cocktail image">
+<% }) %>
+ 
