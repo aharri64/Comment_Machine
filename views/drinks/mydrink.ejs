@@ -1,9 +1,32 @@
-<p>Name: <%= data.drinkName %> </p>
-<p>Ingredient: <%= data.ingredient1 %> </p>
-<p>Comment: <%= data.comment %></p>
+<div id="mydrinks">
+    <h4><%= data.drinkName %> <a href="../editmydrink/<%= data.id %>">EDIT</a> </h4>
+    <img src= '<%= data.strDrinkThumb %>' width='400px' alt="cocktail image">
+    <h5>Ingredients</h5> 
+    <p id=mydrinksingre> 
+        <strong><%= data.ingredient1 %></strong> 
+        <%= data.ingredient2 %> 
+        <strong><%= data.ingredient3 %></strong> 
+        <%= data.ingredient4 %> 
+        <strong><%= data.ingredient5 %></strong> 
+        <%= data.ingredient6 %> 
+        <strong><%= data.ingredient7 %></strong> 
+        <%= data.ingredient8 %> 
+        <strong><%= data.ingredient9 %></strong> 
+        <%= data.ingredient10 %> 
+        <strong><%= data.ingredient11 %></strong> 
+        <%= data.ingredient12 %> 
+        <strong><%= data.ingredient13 %></strong> 
+        <%= data.ingredient14 %> 
+        <strong><%= data.ingredient15 %></strong> 
+    </p>
 
-<p><a href="../editmydrink/<%= data.id %>">EDIT</a></p>
+    <p><strong>rating:</strong> <%=data.rating%> </p>
+    <h5><strong>Comment</strong></h5> 
+    <p> <%= data.comment %></p>
+    <p><strong>DATE:</strong> <%= data.month %> <%= data.day %>, <%= data.year %> </p>
 
-<form action="/drinks/mydrink/<%=data.id%>/?_method=DELETE" method="post">
-    <button type="submit">DELETE</button>
-</form>
+
+    <form action="/drinks/mydrink/<%=data.id%>/?_method=DELETE" method="post">
+        <button type="submit" class="button" style="vertical-align:middle"><span>DELETE</span></button>
+    </form>
+</div>

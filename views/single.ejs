@@ -1,8 +1,7 @@
-<h1> <%= data.drinks[0].strDrink %> </h1>
 
-<p>Category: <%= data.drinks[0].strCategory %> </p>
 
 <div class="results">
+    <h1> <%= data.drinks[0].strDrink %> </h1>
 
     <h3>Ingredients</h3>
     <p> <%= data.drinks[0].strMeasure1 %>  <%= data.drinks[0].strIngredient1 %> </p>
@@ -30,6 +29,6 @@
         
         <input type="button" value="Back" onclick="window.history.back()" /> 
         
-        <a class="nav-link" href="<%= data.drinks[0].idDrink %>/new">Add to the Recipe Book</a>
+        <a class="nav-link" id="nav-link" href="<%= data.drinks[0].idDrink %>/new">Add to the Recipe Book</a>
         
-    </div>
+</div>

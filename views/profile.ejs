@@ -1,13 +1,17 @@
-<h2>Profile Page</h2>
+<div id="profilePage">
+    <h2>Profile Page</h2>
 
-<h3>Welcome to your PROFILE</h3>
-<p>Id: <%= data.dataValues.id %></p>
-<p>Name: <%= data.dataValues.name %></p>
-<p>Email: <%= data.dataValues.email %></p>
+    <h3>Welcome to your PROFILE</h3>
+    <div id="profileDrinks">
+        <%data.cocktails.forEach(attribute => { %>
+            <h5 id="profilename">Name: <a href="drinks/mydrink/<%= attribute.id %>"><%= attribute.drinkName %></a></h5>
+            <img src= '<%= attribute.strDrinkThumb %>' width='400px' alt="cocktail image">
+        <% }) %>   
+    </div>
 
-<%data.cocktails.forEach(attribute => { %>
-<p><%= attribute.id %></p>
-    <h5>Name: <a href="drinks/mydrink/<%= attribute.id %>"><%= attribute.drinkName %></a></h5>
-    <img src= '<%= attribute.strDrinkThumb %>' width='500px' alt="cocktail image">
-<% }) %>
- 
+    <div id="profileinfo">
+        <p>Id: <%= data.dataValues.id %></p>    
+        <p>Name: <%= data.dataValues.name %></p>
+        <p>Email: <%= data.dataValues.email %></p>
+    </div>
+</div>
