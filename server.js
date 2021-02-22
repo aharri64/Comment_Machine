@@ -84,7 +84,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', { data:user });
   })
     // const { id, name, email } = req.user.get();
-}).catch
+})
 
 
 //* go to search page from nav bar

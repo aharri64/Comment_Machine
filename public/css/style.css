@@ -19,17 +19,10 @@ nav ul li {
 }
 
 #title {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: 0.3em;
-  /* background-color: yellow; */
-  color: white;
-  margin: 20px 150px 0 0;
-  -webkit-text-stroke: 2px black;
-  -webkit-text-fill-color: white;
-  font-size: 50px;
-  /* margin-right: 150px; */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 h1 {
