@@ -2,31 +2,34 @@
 
 <p>Category: <%= data.drinks[0].strCategory %> </p>
 
-<h3>Ingredients</h3>
+<div class="results">
 
-<p> <%= data.drinks[0].strMeasure1 %>  <%= data.drinks[0].strIngredient1 %> </p>
-<p> <%= data.drinks[0].strMeasure2 %>  <%= data.drinks[0].strIngredient2 %> </p>
-<p> <%= data.drinks[0].strMeasure3 %>  <%= data.drinks[0].strIngredient3 %> </p>
-<p> <%= data.drinks[0].strMeasure4 %>  <%= data.drinks[0].strIngredient4 %> </p>
-<p> <%= data.drinks[0].strMeasure5 %>  <%= data.drinks[0].strIngredient5 %> </p>
-<p> <%= data.drinks[0].strMeasure6 %>  <%= data.drinks[0].strIngredient6 %> </p>
-<p> <%= data.drinks[0].strMeasure7 %>  <%= data.drinks[0].strIngredient7 %> </p>
-<p> <%= data.drinks[0].strMeasure8 %>  <%= data.drinks[0].strIngredient8 %> </p>
-<p> <%= data.drinks[0].strMeasure9 %>  <%= data.drinks[0].strIngredient9 %> </p>
-<p> <%= data.drinks[0].strMeasure10 %>  <%= data.drinks[0].strIngredient10 %> </p>
-<p> <%= data.drinks[0].strMeasure11 %>  <%= data.drinks[0].strIngredient11 %> </p>
-<p> <%= data.drinks[0].strMeasure12 %>  <%= data.drinks[0].strIngredient12 %> </p>
-<p> <%= data.drinks[0].strMeasure13 %>  <%= data.drinks[0].strIngredient13 %> </p>
-<p> <%= data.drinks[0].strMeasure14 %>  <%= data.drinks[0].strIngredient14 %> </p>
-<p> <%= data.drinks[0].strMeasure15 %>  <%= data.drinks[0].strIngredient15 %> </p>
-<p>Glass: <%= data.drinks[0].strGlass %> </p>
-<p>Instructions: <%= data.drinks[0].strInstructions %> </p>
-
-<% if (data.drinks[0].strVideo !== null) { %>
-<a href="<%= data.drinks[0].strVideo %>">Video</a>
-<% } %>
-
-
-<input type="button" value="Back" onclick="window.history.back()" /> 
-
-<a class="nav-link" href="<%= data.drinks[0].idDrink %>/new">new</a>
+    <h3>Ingredients</h3>
+    <p> <%= data.drinks[0].strMeasure1 %>  <%= data.drinks[0].strIngredient1 %> </p>
+    <p> <%= data.drinks[0].strMeasure2 %>  <%= data.drinks[0].strIngredient2 %> </p>
+    <p> <%= data.drinks[0].strMeasure3 %>  <%= data.drinks[0].strIngredient3 %> </p>
+    <p> <%= data.drinks[0].strMeasure4 %>  <%= data.drinks[0].strIngredient4 %> </p>
+    <p> <%= data.drinks[0].strMeasure5 %>  <%= data.drinks[0].strIngredient5 %> </p>
+    <p> <%= data.drinks[0].strMeasure6 %>  <%= data.drinks[0].strIngredient6 %> </p>
+    <p> <%= data.drinks[0].strMeasure7 %>  <%= data.drinks[0].strIngredient7 %> </p>
+    <p> <%= data.drinks[0].strMeasure8 %>  <%= data.drinks[0].strIngredient8 %> </p>
+    <p> <%= data.drinks[0].strMeasure9 %>  <%= data.drinks[0].strIngredient9 %> </p>
+    <p> <%= data.drinks[0].strMeasure10 %>  <%= data.drinks[0].strIngredient10 %> </p>
+    <p> <%= data.drinks[0].strMeasure11 %>  <%= data.drinks[0].strIngredient11 %> </p>
+    <p> <%= data.drinks[0].strMeasure12 %>  <%= data.drinks[0].strIngredient12 %> </p>
+    <p> <%= data.drinks[0].strMeasure13 %>  <%= data.drinks[0].strIngredient13 %> </p>
+    <p> <%= data.drinks[0].strMeasure14 %>  <%= data.drinks[0].strIngredient14 %> </p>
+    <p> <%= data.drinks[0].strMeasure15 %>  <%= data.drinks[0].strIngredient15 %> </p>
+    <p><strong>Glass:</strong>  <%= data.drinks[0].strGlass %> </p>
+    <p> <strong>Instructions:</strong>   <%= data.drinks[0].strInstructions %> </p>
+    
+    <% if (data.drinks[0].strVideo !== null) { %>
+        <a href="<%= data.drinks[0].strVideo %>">Video</a>
+        <% } %>
+        
+        
+        <input type="button" value="Back" onclick="window.history.back()" /> 
+        
+        <a class="nav-link" href="<%= data.drinks[0].idDrink %>/new">Add to the Recipe Book</a>
+        
+    </div>

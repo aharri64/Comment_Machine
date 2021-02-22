@@ -85,7 +85,7 @@ router.delete('/mydrink/:idDrink', (req, res) => {
       } 
     })
     .then(deleted => {
-        console.log(`This one was deleted${deleted}`)
+        // console.log(`This one was deleted${deleted}`)
         res.redirect('/profile');
     })
 

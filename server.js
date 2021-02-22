@@ -17,7 +17,7 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 const isLoggedIn = require('./middleware/isLoggedIn');
 const { search, get } = require('./controllers/auth');
 
-// MIDDLEWARE
+// MIDDLEWARE 
 app.use(methodOverride('_method'));
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -56,6 +56,7 @@ app.use('/drinks', require('./controllers/drinks'));
 // app.use('/search', require('./controllers/search'));
 
 
+
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -63,6 +64,11 @@ app.get('/', (req, res) => {
 // app.get('/new', (req, res) => {
 //   res.render('new')
 // })
+
+app.get('/error/404', (req,res)=>{
+  console.log(`user reached an error page`)
+  res.render('error/404')
+})
 
 //* profile
 app.get('/profile', isLoggedIn, (req, res) => {
@@ -76,43 +82,9 @@ app.get('/profile', isLoggedIn, (req, res) => {
     // console.log(user[0].pets);
     console.log(user)
     res.render('profile', { data:user });
-  });
-  // const { id, name, email } = req.user.get();
-});
-
-
-
-// //GET TO INDIVIDUAL COCKTAIL
-// app.get('/drinks/mydrink/:idDrink', (req, res) => {
-//   let idDrink = req.params.idDrink
-//   console.log(req.params.idDrink)
-//   db.cocktail.findOne({
-    
-//     where: {
-//       id: idDrink
-//     } 
-//   }).then(function(cocktail){
-//     console.log('looooooooooooook***************', cocktail)
-//     res.render('drinks/mydrink', { data:cocktail });
-//   });
-// }); 
-
-// //GET TO UPDATE FORM
-// app.get('/drinks/editmydrink/:idDrink', (req, res) => {
-//   let idDrink = req.params.idDrink
-//   console.log(req.params.idDrink)
-//   db.cocktail.findOne({
-
-//     where: {
-//       id: idDrink
-//     } 
-//   }).then(function(cocktail){
-//     console.log('looooooooooooook***************', cocktail)
-//     res.render('drinks/editmydrink', { data:cocktail });
-//   });
-// }); 
-
-
+  })
+    // const { id, name, email } = req.user.get();
+}).catch
 
 
 //* go to search page from nav bar
@@ -122,7 +94,7 @@ app.get('/search', isLoggedIn, (req, res) => {
 
 
 //* get results from search
-app.get('/results', (req, res) => {
+app.get('/results', isLoggedIn, (req, res) => {
   let searchByName = 's=' + req.query.searchByName
   // console.log('***********************')
   // console.log(req.query)
@@ -137,13 +109,13 @@ app.get('/results', (req, res) => {
   axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
   .then(function (response) {
       let data = response.data
-      // console.log(data.drinks[0].strDrink)
+      console.log(data)
       res.render('results', {data})
   })
 
 })
 
-app.get('/drinks/:single/new', (req, res) => {
+app.get('/drinks/:single/new', isLoggedIn, (req, res) => {
   // const single = req.params.single
   let single = req.params.single
   var options = {
@@ -171,7 +143,7 @@ app.get('/drinks/:single/new', (req, res) => {
 
 
 
-app.post('/drinks/:single/new', (req, res) => {
+app.post('/drinks/:single/new', isLoggedIn, (req, res) => {
   const addCocktail = req.body
   const userId = req.user.dataValues.id
 
@@ -259,7 +231,7 @@ app.post('/drinks/:single/new', (req, res) => {
 
 
 //* get a single drink from results page
-app.get('/drinks/:single', (req, res) => {
+app.get('/drinks/:single', isLoggedIn, (req, res) => {
   // const single = req.params.single
   let single = req.params.single
   var options = {

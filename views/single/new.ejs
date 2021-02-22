@@ -1,29 +1,42 @@
 
 
 
-<form class="form-floating" method="POST" action="/drinks/<%=data.drinks[0].idDrink%>/new">
-    <input type="text" class="form-control" id="drinkName" name="drinkName" value="<%= data.drinks[0].strDrink %>" cols="2" rows=''>
-    <% if (data.drinks[0].strMeasure1 !== null) { %>
-        <div>
-            <label for="ingredient1">Ingredient 1</label>
-            <input type="text" class="form-control" id="ingredient1" name="ingredient1" value="<%= data.drinks[0].strMeasure1 %> <%= data.drinks[0].strIngredient1 %>" cols="2" rows=''>
+<form class="form-floating g-3" method="POST" action="/drinks/<%=data.drinks[0].idDrink%>/new">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" id="drinkName" name="drinkName" value="<%= data.drinks[0].strDrink %>" cols="2" rows=''>
         </div>
-    <% } %>
-
-    <% if (data.drinks[0].strMeasure2 !== null) { %>
-        <div>
-            <label for="ingredient2">Ingredient 2</label>
-            <input type="text" class="form-control" id="ingredient2"  name="ingredient2" value="<%= data.drinks[0].strMeasure2 %> <%= data.drinks[0].strIngredient2 %>" cols="2" rows=''>
-        </div>
-    <% } %>
-
-    <% if (data.drinks[0].strMeasure3 !== null) { %>
-        <div>
-            <label for="ingredient3">Ingredient 3</label>
-            <input type="text" class="form-control" id="ingredient3"  name="ingredient3" value="<%= data.drinks[0].strMeasure3 %> <%= data.drinks[0].strIngredient3 %>" cols="2" rows='5'>
-        </div>
-    <% } %>
+    </div>
     
+    <div class="row">
+        <div class="col">
+            <% if (data.drinks[0].strMeasure1 !== null) { %>
+                <div >
+                    <label for="ingredient1">Ingredient 1</label>
+                    <input type="text" class="form-control" id="ingredient1" name="ingredient1" value="<%= data.drinks[0].strMeasure1 %> <%= data.drinks[0].strIngredient1 %>" cols="2" rows=''>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="col">    
+            <% if (data.drinks[0].strMeasure2 !== null) { %>
+                <div>
+                    <label for="ingredient2">Ingredient 2</label>
+                    <input type="text" class="form-control" id="ingredient2"  name="ingredient2" value="<%= data.drinks[0].strMeasure2 %> <%= data.drinks[0].strIngredient2 %>" cols="2" rows=''>
+                </div>
+            <% } %>
+        </div>    
+        
+        <div class="col">    
+            <% if (data.drinks[0].strMeasure3 !== null) { %>
+                <div>
+                    <label for="ingredient3">Ingredient 3</label>
+                    <input type="text" class="form-control" id="ingredient3"  name="ingredient3" value="<%= data.drinks[0].strMeasure3 %> <%= data.drinks[0].strIngredient3 %>" cols="2" rows='5'>
+                </div>
+            <% } %>
+        </div>
+            
+        </div>
     <% if (data.drinks[0].strMeasure4 !== null) { %>
         <div>
             <label for="ingredient4">Ingredient 4</label>
