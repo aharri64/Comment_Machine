@@ -1,20 +1,23 @@
-<ul class="nav justify-content-end">
-  <% if (!currentUser) {%>
-    <li class="nav-item">
-      <a class="nav-link active" href="/auth/signup">Signup</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/auth/login">Login</a>
-    </li>
-    <% } else if (currentUser){ %>
+<nav>
+  <ul class="nav justify-content-end">
+    <h1 id="logo">K R A T E R O L O G I S T</h1>
+    <% if (!currentUser) {%>
       <li class="nav-item">
-        <a class="nav-link" href="/auth/logout">Logout</a>
+        <a class="nav-link active" href="/auth/signup">Signup</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
+        <a class="nav-link" href="/auth/login">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/search">Search</a>
-      </li>
-      <% } %>
-</ul>
+      <% } else if (currentUser){ %>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/logout">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Search</a>
+        </li>
+        <% } %>
+  </ul>
+</nav>
