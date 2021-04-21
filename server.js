@@ -53,6 +53,7 @@ app.use((req, res, next) => {
 // Controllers
 app.use('/auth', require('./controllers/auth'));
 app.use('/drinks', require('./controllers/drinks'));
+app.use('/lessons', require('./controllers/lessons'));
 // app.use('/search', require('./controllers/search'));
 
 
@@ -65,7 +66,12 @@ app.get('/', (req, res) => {
 //   res.render('new')
 // })
 
-app.get('/error/404', (req,res)=>{
+// about route
+app.get('/about', (req, res) => {
+  res.render('about');
+});
+
+app.get('/error/404', (req, res) => {
   console.log(`user reached an error page`)
   res.render('error/404')
 })
@@ -76,14 +82,14 @@ app.get('/profile', isLoggedIn, (req, res) => {
     include: [db.cocktail],
     where: {
       id: req.user.dataValues.id
-    } 
-  }).then(function(user){
+    }
+  }).then(function (user) {
     // users will have a .pets key with an array of pets
     // console.log(user[0].pets);
     console.log(user)
-    res.render('profile', { data:user });
+    res.render('profile', { data: user });
   })
-    // const { id, name, email } = req.user.get();
+  // const { id, name, email } = req.user.get();
 })
 
 
@@ -99,19 +105,19 @@ app.get('/results', isLoggedIn, (req, res) => {
   // console.log('***********************')
   // console.log(req.query)
   // let searchByIngredient = 'i=' req.body.ingredient
-  var qs= {
-      headers:{
-          'x-rapidapi-key': process.env.RAPID_API_KEY,
-          'x-rapidapi-host': process.env.RAPID_API_HOST 
-      }
+  var qs = {
+    headers: {
+      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      'x-rapidapi-host': process.env.RAPID_API_HOST
+    }
   }
 
   axios.get(`https://the-cocktail-db.p.rapidapi.com/search.php?${searchByName}`, qs)
-  .then(function (response) {
+    .then(function (response) {
       let data = response.data
       console.log(data)
-      res.render('results', {data})
-  })
+      res.render('results', { data })
+    })
 
 })
 
@@ -121,24 +127,24 @@ app.get('/drinks/:single/new', isLoggedIn, (req, res) => {
   var options = {
     method: 'get',
     url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
-    params: {i: single},
+    params: { i: single },
     headers: {
       'x-rapidapi-key': process.env.RAPID_API_KEY,
-      'x-rapidapi-host': process.env.RAPID_API_HOST 
+      'x-rapidapi-host': process.env.RAPID_API_HOST
     }
   };
-  
+
   axios.request(options).then(function (response) {
 
     const data = response.data
     // //console.log('LOOOOOOOOOOOOOOK HERE***', data)
-    res.render('single/new', {data})
+    res.render('single/new', { data })
     // console.log('*****', response.data, '*****');
   }).catch(function (error) {
     console.error(error);
   });
 
-}) 
+})
 
 
 
@@ -148,46 +154,46 @@ app.post('/drinks/:single/new', isLoggedIn, (req, res) => {
   const userId = req.user.dataValues.id
 
   const trackingCocktail = req.params.single
-  if (addCocktail.ingredient2 == undefined){
+  if (addCocktail.ingredient2 == undefined) {
     addCocktail.ingredient2 = ''
   }
-  if (addCocktail.ingredient3 == undefined){
+  if (addCocktail.ingredient3 == undefined) {
     addCocktail.ingredient3 = ''
   }
-  if (addCocktail.ingredient4 == undefined){
+  if (addCocktail.ingredient4 == undefined) {
     addCocktail.ingredient4 = ''
   }
-  if (addCocktail.ingredient5 == undefined){
+  if (addCocktail.ingredient5 == undefined) {
     addCocktail.ingredient5 = ''
   }
-  if (addCocktail.ingredient6 == undefined){
+  if (addCocktail.ingredient6 == undefined) {
     addCocktail.ingredient6 = ''
   }
-  if (addCocktail.ingredient7 == undefined){
+  if (addCocktail.ingredient7 == undefined) {
     addCocktail.ingredient7 = ''
   }
-  if (addCocktail.ingredient8 == undefined){
+  if (addCocktail.ingredient8 == undefined) {
     addCocktail.ingredient8 = ''
   }
-  if (addCocktail.ingredient9 == undefined){
+  if (addCocktail.ingredient9 == undefined) {
     addCocktail.ingredient9 = ''
   }
-  if (addCocktail.ingredient10 == undefined){
+  if (addCocktail.ingredient10 == undefined) {
     addCocktail.ingredient10 = ''
   }
-  if (addCocktail.ingredient11 == undefined){
+  if (addCocktail.ingredient11 == undefined) {
     addCocktail.ingredient11 = ''
   }
-  if (addCocktail.ingredient12 == undefined){
+  if (addCocktail.ingredient12 == undefined) {
     addCocktail.ingredient12 = ''
   }
-  if (addCocktail.ingredient13 == undefined){
+  if (addCocktail.ingredient13 == undefined) {
     addCocktail.ingredient13 = ''
   }
-  if (addCocktail.ingredient14 == undefined){
+  if (addCocktail.ingredient14 == undefined) {
     addCocktail.ingredient14 = ''
   }
-  if (addCocktail.ingredient15 == undefined){
+  if (addCocktail.ingredient15 == undefined) {
     addCocktail.ingredient15 = ''
   }
   // console.log('req.params', trackingCocktail)
@@ -195,7 +201,7 @@ app.post('/drinks/:single/new', isLoggedIn, (req, res) => {
   // console.log('req.body', addCocktail)
   // console.log('1.LOOKHERE!!!!!!', req.user.dataValues.id)
   db.cocktail.findOrCreate({
-    
+
     where: {
       userId: userId,
       drinkId: trackingCocktail,
@@ -237,22 +243,22 @@ app.get('/drinks/:single', isLoggedIn, (req, res) => {
   var options = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
-    params: {i: single},
+    params: { i: single },
     headers: {
       'x-rapidapi-key': process.env.RAPID_API_KEY,
-      'x-rapidapi-host': process.env.RAPID_API_HOST 
+      'x-rapidapi-host': process.env.RAPID_API_HOST
     }
   };
-  
+
   axios.request(options).then(function (response) {
     const data = response.data
-    res.render('single', {data})
+    res.render('single', { data })
     console.log(response.data);
   }).catch(function (error) {
     console.error(error);
   });
-  
-}) 
+
+})
 
 //PUT ROUTE
 
