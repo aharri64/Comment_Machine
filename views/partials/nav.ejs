@@ -1,6 +1,15 @@
 <nav>
   <ul class="nav justify-content-end">
-    <h1 id="logo">K R A T E R O L O G I S T</h1>
+    <!-- <a href='/'> -->
+    <h1 class="logo"><a href='/' class='logo'>KRATEROLOGIST</a></h1>
+    <!-- </a> -->
+    <li class="nav-item">
+      <a class="nav-link active" href="/about">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/lessons">Lessons</a>
+    </li>
+
     <% if (!currentUser) {%>
       <li class="nav-item">
         <a class="nav-link active" href="/auth/signup">Signup</a>
