@@ -12,9 +12,23 @@ nav {
   
 }
 
-#logo {
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+
+.logo {
   color: white;
   margin: auto 50% 0 0;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: white;
 }
 
 nav ul li {
