@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
 
+
 // Session Middleware
 
 // secret: What we actually will be giving the user on our site as a session cookie
@@ -36,6 +37,7 @@ const sessionObject = {
   saveUninitialized: true
 }
 app.use(session(sessionObject));
+
 
 
 // Passport
