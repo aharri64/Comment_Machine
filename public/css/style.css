@@ -1,12 +1,12 @@
 body {
-  background-image: url(../imgs/noisy-texture-100x100-o8-d14-c-f0ffff-t1.png);
+  background-image: url(../images/noisy-texture-100x100-o8-d14-c-f0ffff-t1.png);
 }
 
 nav {
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
-    ), url(../imgs/Cocktails-Title-Image.jpg);
+    ), url(../images/Cocktails-Title-Image.jpg);
   background-size: contain;
   height: 100px;
   
@@ -220,4 +220,5 @@ p {
 #profileinfo {
   text-align: right;
   margin: 20px;
+  
 }
