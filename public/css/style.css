@@ -1,5 +1,6 @@
 body {
-  background-image: url(../images/noisy-texture-100x100-o8-d14-c-f0ffff-t1.png);
+  /* background-image: url(../images/noisy-texture-100x100-o8-d14-c-f0ffff-t1.png); */
+  background-color: rgb(104, 104, 104);
 }
 
 nav {
