@@ -43,6 +43,7 @@ nav ul li {
   color: black;
   margin: 20px 20px 0 0;
   font-size: 20px;
+  border-radius: 4px;
 }
 
 #title {
